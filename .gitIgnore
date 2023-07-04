@@ -69,3 +69,7 @@ fastlane/test_output
 Landmarks.xcodeproj/project.xcworkspace/xcshareddata
 Landmarks.xcodeproj/project.xcworkspace/contents.xcworkspacedata
 .DS_Store
+Contract/ContactBook.xcodeproj/project.xcworkspace/xcshareddata
+Contract/ContactBook.xcodeproj/project.xcworkspace
+Contract/ContactBook.xcodeproj/xcshareddata
+
