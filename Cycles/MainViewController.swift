@@ -41,6 +41,16 @@ class MainViewController: UIViewController {
       user: user
     )
     iPhone.provision(carrierSubscription: subscription)
+    
+    print(subscription.completePhoneNumber())
+    
+    let greetingMaker: () -> String
+    do {
+      let mermaid = WWDCGreeting(who: "caffeinated mermaid")
+      greetingMaker = mermaid.greetingMaker
+    }
+    
+    print(greetingMaker())
   }
   
   override func viewDidLoad() {
@@ -99,6 +109,9 @@ class CarrierSubscription {
   let countryCode: String
   let number: String
   unowned let user: User
+  lazy var completePhoneNumber: () -> String = { [unowned self] in
+    self.countryCode + " " + self.number
+  }
   
   init(name: String, countryCode: String, number: String, user: User) {
     self.name = name
@@ -112,5 +125,21 @@ class CarrierSubscription {
   
   deinit {
     print("Deallocating CarrierSubscription named: \(name)")
+  }
+}
+
+class WWDCGreeting {
+  let who: String
+  
+  init(who: String) {
+    self.who = who
+  }
+  
+  lazy var greetingMaker: () -> String = { [weak self] in
+    guard let self = self else {
+      return "No greeting available."
+    }
+    
+    return "Hello \(self.who)."
   }
 }
