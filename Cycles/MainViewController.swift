@@ -29,7 +29,23 @@
 import UIKit
 
 class MainViewController: UIViewController {
+  
+  let user = User(name: "John")
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+  }
+}
+
+class User {
+  var name: String
+  
+  init(name: String) {
+    self.name = name
+    print("User \(name) was initialized")
+  }
+
+  deinit {
+    print("Deallocating user named: \(name)")
   }
 }
