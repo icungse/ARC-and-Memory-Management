@@ -30,10 +30,14 @@ import UIKit
 
 class MainViewController: UIViewController {
   
-  let user = User(name: "John")
+  func runScenario() {
+    let user = User(name: "John")
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    runScenario()
   }
 }
 
