@@ -32,6 +32,8 @@ class MainViewController: UIViewController {
   
   func runScenario() {
     let user = User(name: "John")
+    let iPhone = Phone(model: "iPhone Xs")
+    user.add(phone: iPhone)
   }
   
   override func viewDidLoad() {
@@ -43,6 +45,7 @@ class MainViewController: UIViewController {
 
 class User {
   var name: String
+  private(set) var phones: [Phone] = []
   
   init(name: String) {
     self.name = name
@@ -51,5 +54,25 @@ class User {
 
   deinit {
     print("Deallocating user named: \(name)")
+  }
+  
+  func add(phone: Phone) {
+    phones.append(phone)
+    phone.owner = self
+  }
+}
+
+
+class Phone {
+  let model: String
+  var owner: User?
+  
+  init(model: String) {
+    self.model = model
+    print("Phone \(model) was initialized")
+  }
+  
+  deinit {
+    print("Deallocating phone named: \(model)")
   }
 }
