@@ -65,7 +65,7 @@ class User {
 
 class Phone {
   let model: String
-  var owner: User?
+  weak var owner: User?
   
   init(model: String) {
     self.model = model
